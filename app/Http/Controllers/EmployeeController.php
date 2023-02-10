@@ -13,7 +13,7 @@ class EmployeeController extends Controller
         if($request->has('q')){
             $data = Employee::where('nama','like', '%'.$request->q.'%')->paginate();
         } else {
-            $data = Employee::all();
+            $data = Employee::paginate(5);
         }
 
         return view('home/home', compact('data'));
