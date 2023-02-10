@@ -53,6 +53,7 @@
             <th scope="col">Nama</th>
             <th scope="col">Foto</th>
             <th scope="col">Jenis Kelamin</th>
+            <th scope="col">Agama</th>
             <th scope="col">No telepon</th>
             <th scope="col">Dibuat</th>
             <th scope="col">Action</th>
@@ -67,6 +68,7 @@
               <img src="{{ asset('photoemployee/'.$employee->foto) }}" alt="" style="max-width: 50px;">
             </td>
             <td>{{$employee->jenis_kelamin}}</td>
+            <td>{{$employee->religions->nama}}</td>
             <td>{{$employee->no_telepon}}</td>
             <td>{{$employee->created_at->diffForHumans()}}</td>
             <!-- untuk hari dan tanggal -->

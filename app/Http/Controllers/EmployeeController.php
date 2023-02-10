@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Religion;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -20,7 +21,8 @@ class EmployeeController extends Controller
     }
 
     public function insert(){
-        return view('employee/insert');
+        $religions = Religion::all();
+        return view('employee/insert', compact('religions'));
     }
 
     public function insertPost(Request $request){
@@ -36,8 +38,13 @@ class EmployeeController extends Controller
     }
     
     public function showDetail($id){
-        $data = Employee::find($id);
-        return view('employee/edit', compact('data'));
+        $employee = Employee::find($id);
+        $religions = Religion::all();
+        // $data = [
+        //     'employee' => Employee::find($id),
+        //     'religions' => Religion::all()
+        // ];
+        return view('employee/edit', compact('employee', "religions"));
     }
 
     public function update(Request $request, $id){

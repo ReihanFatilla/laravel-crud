@@ -15,22 +15,32 @@
             <div class="col-8">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/update/{{$data->id}}" method="POST" enctype="multipart/form-data">
+                        <form action="/update/{{$employee->id}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Nama Lengkap</label>
-                                <input value="{{ $data->nama }}" type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input value="{{ $employee->nama }}" type="text" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">No Telepon</label>
-                                <input value="{{ $data->no_telepon }}" type="number" name="no_telepon" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input value="{{ $employee->no_telepon }}" type="number" name="no_telepon" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
                                 <select name="jenis_kelamin" class="form-select" aria-label="Default select example">
-                                    <option selected>{{ $data->jenis_kelamin }}</option>
+                                    <option selected>{{ $employee->jenis_kelamin }}</option>
                                     <option value="cowo">Cowo</option>
                                     <option value="cewe">Cewe</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
+                                <select name="id_religions" class="form-select" aria-label="Default select example">
+                                    <option selected>{{ $employee->religions->nama }}</option>
+                                    @foreach($religions as $religion)
+                                    <option value="{{$religion->id}}">{{$religion->nama}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -45,5 +55,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    
+</script>
 </html>

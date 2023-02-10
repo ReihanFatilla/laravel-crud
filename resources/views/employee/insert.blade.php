@@ -34,6 +34,15 @@
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Agama</label>
+                                <select name="id_religions" class="form-select" aria-label="Default select example">
+                                    <option selected>Pilih Agama</option>
+                                    @foreach($religions as $religion)
+                                    <option value="{{$religion->id}}">{{$religion->nama}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Foto</label>
                                 <input type="file" name="foto" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
