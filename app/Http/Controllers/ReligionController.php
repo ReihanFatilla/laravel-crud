@@ -12,74 +12,41 @@ class ReligionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->has('q')){
+            $data = Religion::where('nama','like', '%'.$request->q.'%')->paginate();
+        } else {
+            $data = Religion::all();
+        }
+        return view("religion/religion", compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function insert(){
+        return view('religion/insert');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function insertPost(Request $request){
+        Religion::create($request->all());
+
+        return redirect('religion')->with('success', 'Data berhasil di Tambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Religion  $religion
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Religion $religion)
-    {
-        //
+    public function show($id){
+        $data = Religion::find($id);
+        return view('religion/edit', compact('data'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Religion  $religion
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Religion $religion)
-    {
-        //
+    public function update(Request $request, $id){
+        $data = Religion::find($id);
+        $data->update($request->all());
+        return redirect('religion')->with('success', 'Data berhasil di Ubah');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Religion  $religion
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Religion $religion)
-    {
-        //
+    public function delete($id){
+        $data = Religion::find($id);
+        $data->delete();
+        return back()->with('success', 'Data berhasil di Dihapus');;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Religion  $religion
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Religion $religion)
-    {
-        //
-    }
 }

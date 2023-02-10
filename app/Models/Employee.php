@@ -10,4 +10,8 @@ class Employee extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function religions(){
+        return $this->belongsTo(Religion::class, 'id_religions', 'id');
+    }
 }

@@ -16,11 +16,11 @@ class EmployeeController extends Controller
             $data = Employee::paginate(5);
         }
 
-        return view('home/home', compact('data'));
+        return view('employee/employee', compact('data'));
     }
 
     public function insert(){
-        return view('insert/insert');
+        return view('employee/insert');
     }
 
     public function insertPost(Request $request){
@@ -37,7 +37,7 @@ class EmployeeController extends Controller
     
     public function showDetail($id){
         $data = Employee::find($id);
-        return view('edit/edit', compact('data'));
+        return view('employee/edit', compact('data'));
     }
 
     public function update(Request $request, $id){
