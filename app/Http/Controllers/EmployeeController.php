@@ -8,8 +8,14 @@ use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
 
-    public function index(){
-        $data = Employee::all();
+    public function index(Request $request){
+
+        if($request->has('q')){
+            $data = Employee::where('nama','like', '%'.$request->q.'%')->paginate();
+        } else {
+            $data = Employee::all();
+        }
+
         return view('home/home', compact('data'));
     }
 

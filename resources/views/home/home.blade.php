@@ -6,11 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Crud Employee</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <style>
+    .horizontal-spacer{
+      padding-left: 250px;
+      padding-right: 250px;
+    }
+  </style>
 </head>
 
 <body>
-  <h1 class="text-center my-4">Employee Data</h1>
-  <div class="container">
+<nav class="navbar bg-body-tertiary horizontal-spacer">
+  <div class="container-fluid">
+    <a class="navbar-brand">Employee</a>
+    <form class="d-flex" action="employee" method="GET" role="search">
+      <input class="form-control me-2" name="q"  type="search" placeholder="Search" aria-label="Search">
+    </form>
+  </div>
+</nav>
+  <div class="container horizontal-spacer">
     <a href="/employee/insert" type="button" class="btn btn-success">Tambah</a>
     <div class="row">
       @if($message = Session::get('success'))
@@ -18,7 +31,7 @@
         {{ $message }}
       </div>
       @endif
-      <table class="table">
+      <table class="table text-center">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -56,6 +69,7 @@
       </table>
     </div>
   </div>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
