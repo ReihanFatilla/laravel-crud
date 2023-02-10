@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('nama');
             $table->enum('jenis_kelamin', ['cowo', 'cewe' ]);
             $table->bigInteger('no_telepon');
+            $table->string('foto');
             $table->timestamps();
         });
     }
