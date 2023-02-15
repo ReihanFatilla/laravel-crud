@@ -41,12 +41,14 @@ Route::group(['middleware' => ['auth', 'accessrights:admin']], function () {
     Route::post('/religion/update/{id}', [ReligionController::class, 'update'])->name('update');
     Route::get('/religion/delete/{id}', [ReligionController::class, 'delete'])->name('delete');
 
-
 });
 
 Route::group(['middleware' => ['auth', 'accessrights:employee,admin']], function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Logout
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 // Login
