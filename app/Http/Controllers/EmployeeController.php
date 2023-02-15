@@ -40,10 +40,6 @@ class EmployeeController extends Controller
     public function showDetail($id){
         $employee = Employee::find($id);
         $religions = Religion::all();
-        // $data = [
-        //     'employee' => Employee::find($id),
-        //     'religions' => Religion::all()
-        // ];
         return view('employee/edit', compact('employee', "religions"));
     }
 

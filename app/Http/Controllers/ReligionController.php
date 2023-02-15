@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 
 class ReligionController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index(Request $request)
     {
         if($request->has('q')){
