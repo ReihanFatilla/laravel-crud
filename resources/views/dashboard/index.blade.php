@@ -61,8 +61,42 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    var religionName = @json($religionName);
+    var religionAmount = @json($religionAmount);
+    
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: religionName,
+            datasets: [{
+                label: 'Employeer with this religion',
+                data: religionAmount,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 @endsection
